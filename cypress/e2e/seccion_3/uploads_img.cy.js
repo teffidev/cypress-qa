@@ -4,7 +4,7 @@
 //*Cuando vayamos a cargar archivos
 import "cypress-file-upload";
 
-import "../support/commands";
+import "../../support/commands";
 
 //*Cuando vayamos a usar la busqueda por el selector xpath
 require("cypress-xpath");
