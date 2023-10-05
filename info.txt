@@ -2,61 +2,48 @@
 
 #Pasos para la ejecución de las pruebas con Cypress
 
-1. - Instalar cypress = https://docs.cypress.io/guides/getting-started/installing-cypress
-    --> npm install cypress --save-dev
-2. - Instalar NPX = https://www.npmjs.com/package/npx
-    --> npm install -g npx
-3. - Iniciar la App
-    --> npx cypress open
-4. - (Opcional) Instalar CORS
-    --> npm install cors
-6. - Crear el archivo server.js para configurar los CORS
-7. - Instalar plugin de Tab
-    --> npm install -D cypress-plugin-tab
-    En el archivo que vayamos a usar el TAB, debemos ponemos
-    --> require("cypress-plugin-tab")
-8. - Instalar pulgin cypress-xpath para el uso del selector
-    --> npm install -D cypress-xpath
-9. - Para usar el cypress-xpath debemos usar el require dentro del archivo de gestión
-    --> require('cypress-xpath');
-10. - Para poder utulizar (fake data) en Cypress debemos instalar la bibliote de Faker.js
-    --> npm install faker --save-dev
-    - Además debemos crear un archivo nombrado fakeData.js dentro de la carpeta 'support'
-        **El cual contendrá toda la información fake que queremos traer de la biblioteca.
-11. - Instalar y el preprocesador de archivos
-    --> npm install --save-dev @cypress/webpack-preprocessor
-    - Y configurar y modificar el archivo cypress.config.js para importar y utilizar módulos 
-        de Faker.js en los archivos de prueba de Cypress, así:
-            --> import faker from 'faker';
-12. - Instalar el complemento para cargar archivos
-    --> npm install --save-dev cypress-file-upload
-13. - Importar y registrar el complemento en el archivo commands.js
-    --> import 'cypress-file-upload';
+1. Instalar cypress = https://docs.cypress.io/guides/getting-started/installing-cypress --> npm install cypress --save-dev
+2. Instalar NPX = https://www.npmjs.com/package/npx --> npm install -g npx
+3. Iniciar la App --> npx cypress open
+4. (Opcional) Instalar CORS --> npm install cors / Crear el archivo server.js para configurar los CORS 
+5. Instalar plugin de Tab --> npm install -D cypress-plugin-tab / En el archivo donde vayamos a usar el TAB, debemos ponemos --> require("cypress-plugin-tab")
+6. Instalar pulgin cypress-xpath para el uso del selector --> npm install -D cypress-xpath
+7. Para usar el cypress-xpath debemos usar el require dentro del archivo de gestión --> require('cypress-xpath');
+8. Para poder utulizar (fake data) en Cypress debemos instalar la libreria de Faker.js --> npm install faker --save-dev
+    - Además debemos crear un archivo nombrado fakeData.js dentro de la carpeta 'support'; donde estará toda la información fake que queremos traer de la libreria.
+9. Instalar y el preprocesador de archivos --> npm install --save-dev @cypress/webpack-preprocessor
+    - Y configurar y modificar el archivo cypress.config.js para importar y utilizar módulos de Faker.js en los archivos de prueba de Cypress --> import faker from 'faker';
+10. Instalar el complemento para cargar archivos --> npm install --save-dev cypress-file-upload
+11. Importar y registrar el complemento en el archivo commands.js --> import 'cypress-file-upload';
 
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 #Recomendaciones para la gestión de la automatización de las pruebas
 
 1. Los archivos de ejecución se crean con .cy.js (ejemplo.cy.js);  dentro de las carpetas cypress > e2e
 
-2. - Usar los selectores:
+2. Usar los selectores:
         - Por ID --> cy.get("#userName")
         - Por Atributos --> cy.get("[placeholder='Full Name']")
         - Por XPath --> cy.xpath("//*[@id='userName']")
-            **Se usa para seleccionar un elemento con una combinación especifica o combinación de elementos
+            - Se usa para seleccionar un elemento con una combinación especifica o combinación de elementos
                 desde el navegador se obtiene seleccionando el elemento y con ctrl+click derecho seleccionamos 'Copy XPath'
-            **Para tener un plus, se puede adicionar la extensión a Chrom lalamda 'ChroPath'
+            - Para tener un plus, se puede adicionar la extensión a Chrom lalamda 'ChroPath'
         - Por selector --> cy.get("#userName")
-            **Desde el navegador se obtiene seleccionando el elemento y con ctrl+click derecho seleccionamos 'Copy Selector'
+            - Desde el navegador se obtiene seleccionando el elemento y con ctrl+click derecho seleccionamos 'Copy Selector'
 
-        cy.log("Imprimir texto") - cy.wait(milisegundos) 
-        cy.get("cualquiera de los selectores").type("Nombre o información que queremos que vaya en un input")
+        - cy.log("Imprimir texto") - cy.wait(milisegundos) 
+        - cy.get("cualquiera de los selectores").type("Nombre o información que queremos que vaya en un input")
 
-2. - Hacer el import de los comandos para evitar que Cypress no pase la prueba retornando false
-        import "../support/commands";
+2. Hacer el import de los comandos para evitar que Cypress no pase la prueba retornando false --> import "../support/commands";
         
         Cypress.on("uncaught:exception", (err, runnable) => {
             return false;
         });
 
-3. - Para validar los comandos de Cypress en cada archivo que estemos trabajando, vamos a usar:
-        --> /// <reference types= "Cypress" />
+3. Para validar los comandos de Cypress en cada archivo que estemos trabajando, vamos a usar --> /// <reference types= "Cypress" />
+
+4. Par poder visualizar mejor la pantalla en el dashboard de Cypress podemos hacer las configuraciones del viewport dentro del archivo cypress.config.js, modificando los valores de los siguientes atributos:
+        viewportWidth: 1600,
+        viewportHeight: 900,
+
+5. Para ingresar sin problema a páginas web de seguridad, en nuestro archivo de cypress.config.js debemos setear en false el atributo 'chromeWebSecurity'
