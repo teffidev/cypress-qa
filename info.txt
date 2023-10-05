@@ -34,16 +34,16 @@
         - cy.log("Imprimir texto") - cy.wait(milisegundos) 
         - cy.get("cualquiera de los selectores").type("Nombre o información que queremos que vaya en un input")
 
-2. Hacer el import de los comandos para evitar que Cypress no pase la prueba retornando false --> import "../support/commands";
+3. Hacer el import de los comandos para evitar que Cypress no pase la prueba retornando false --> import "../support/commands";
         
         Cypress.on("uncaught:exception", (err, runnable) => {
             return false;
         });
 
-3. Para validar los comandos de Cypress en cada archivo que estemos trabajando, vamos a usar --> /// <reference types= "Cypress" />
+4. Para validar los comandos de Cypress en cada archivo que estemos trabajando, vamos a usar --> /// <reference types= "Cypress" />
 
-4. Par poder visualizar mejor la pantalla en el dashboard de Cypress podemos hacer las configuraciones del viewport dentro del archivo cypress.config.js, modificando los valores de los siguientes atributos:
+5. Par poder visualizar mejor la pantalla en el dashboard de Cypress podemos hacer las configuraciones del viewport dentro del archivo cypress.config.js, modificando los valores de los siguientes atributos:
         viewportWidth: 1600,
         viewportHeight: 900,
 
-5. Para ingresar sin problema a páginas web de seguridad, en nuestro archivo de cypress.config.js debemos setear en false el atributo 'chromeWebSecurity'
+6. Para ingresar sin problema a páginas web de seguridad, en nuestro archivo de cypress.config.js debemos setear en false el atributo 'chromeWebSecurity'
