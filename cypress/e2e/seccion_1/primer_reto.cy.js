@@ -1,5 +1,5 @@
 /// <reference types= "Cypress" />
-import "../support/commands";
+import "../../support/commands";
 
 require("cypress-plugin-tab");
 
