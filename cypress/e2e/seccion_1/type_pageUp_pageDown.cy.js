@@ -2,7 +2,7 @@
 /// <reference types= "Cypress" />
 
 describe("Ejemplo de Type pageUp - pageDown", () => {
-  it.only("Type pageUp primero", () => {
+  it("Type pageUp primero", () => {
     cy.visit("https://testingqarvn.com.es/datos-personales/");
 
     cy.title().should("eq", "Datos Personales | TestingQaRvn");
@@ -32,7 +32,7 @@ describe("Ejemplo de Type pageUp - pageDown", () => {
     cy.wait(2000);
   });
 
-  it.only("Type pageDown último", () => {
+  it("Type pageDown último", () => {
     cy.visit("https://testingqarvn.com.es/datos-personales/");
 
     cy.title().should("eq", "Datos Personales | TestingQaRvn");
